@@ -1,7 +1,7 @@
 import { HTMLAttributes, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
+// import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
 import { z } from 'zod'
 import {
   Form,
@@ -16,28 +16,49 @@ import { Button } from '@/components/custom/button'
 import { PasswordInput } from '@/components/custom/password-input'
 import { cn } from '@/lib/utils'
 
-interface SignUpFormProps extends HTMLAttributes<HTMLDivElement> {}
+interface SignUpFormProps extends HTMLAttributes<HTMLDivElement> { }
 
 const formSchema = z
   .object({
+    first_name: z
+      .string()
+      .min(1, { message: 'يرجى إدخال الاسم الأول' }),
+    last_name: z
+      .string()
+      .min(1, { message: 'يرجى إدخال اسم العائلة' }),
+    user_name: z
+      .string()
+      .min(1, { message: 'يرجى إدخال اسم المستخدم' }),
     email: z
       .string()
-      .min(1, { message: 'Please enter your email' })
-      .email({ message: 'Invalid email address' }),
+      .min(1, { message: 'يرجى إدخال البريد الإلكتروني' })
+      .email({ message: 'عنوان البريد الإلكتروني غير صالح' }),
+    address: z
+      .string()
+      .min(1, { message: 'يرجى إدخال العنوان' }),
+    phone_number: z
+      .string()
+      .min(1, { message: 'يرجى إدخال رقم الهاتف' }),
+    id_number: z
+      .string()
+      .min(1, { message: 'يرجى إدخال رقم الهوية' }),
+    register_code: z
+      .string()
+      .min(1, { message: 'يرجى إدخال رمز التسجيل' }),
     password: z
       .string()
       .min(1, {
-        message: 'Please enter your password',
+        message: 'يرجى إدخال كلمة المرور',
       })
       .min(7, {
-        message: 'Password must be at least 7 characters long',
+        message: 'يجب أن تكون كلمة المرور مكونة من 7 أحرف على الأقل',
       }),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match.",
+    message: 'كلمات المرور غير متطابقة',
     path: ['confirmPassword'],
-  })
+  });
 
 export function SignUpForm({ className, ...props }: SignUpFormProps) {
   const [isLoading, setIsLoading] = useState(false)
@@ -45,7 +66,13 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      first_name: '',
+      last_name: '',
+      user_name: '',
       email: '',
+      address: '',
+      phone_number: '',
+      id_number: '',
       password: '',
       confirmPassword: '',
     },
@@ -67,12 +94,90 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
           <div className='grid gap-2'>
             <FormField
               control={form.control}
+              name='first_name'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>الاسم الأول</FormLabel>
+                  <FormControl>
+                    <Input placeholder='الاسم الأول' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='last_name'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>اسم العائلة</FormLabel>
+                  <FormControl>
+                    <Input placeholder='اسم العائلة' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='user_name'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>اسم المستخدم</FormLabel>
+                  <FormControl>
+                    <Input placeholder='اسم المستخدم' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name='email'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>البريد الإلكتروني</FormLabel>
                   <FormControl>
                     <Input placeholder='name@example.com' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='address'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>العنوان</FormLabel>
+                  <FormControl>
+                    <Input placeholder='العنوان' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='phone_number'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>رقم الهاتف</FormLabel>
+                  <FormControl>
+                    <Input placeholder='+201234567890' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='id_number'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>رقم الهوية</FormLabel>
+                  <FormControl>
+                    <Input placeholder='' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,10 +210,10 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               )}
             />
             <Button className='mt-2' loading={isLoading}>
-              Create Account
+              إنشاء حساب
             </Button>
 
-            <div className='relative my-2'>
+            {/* <div className='relative my-2'>
               <div className='absolute inset-0 flex items-center'>
                 <span className='w-full border-t' />
               </div>
@@ -138,7 +243,7 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               >
                 Facebook
               </Button>
-            </div>
+            </div> */}
           </div>
         </form>
       </Form>

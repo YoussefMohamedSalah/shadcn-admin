@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
+// import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
 import {
   Form,
   FormControl,
@@ -17,20 +17,20 @@ import { Button } from '@/components/custom/button'
 import { PasswordInput } from '@/components/custom/password-input'
 import { cn } from '@/lib/utils'
 
-interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }
 
 const formSchema = z.object({
   email: z
     .string()
-    .min(1, { message: 'Please enter your email' })
-    .email({ message: 'Invalid email address' }),
+    .min(1, { message: 'من فضلك ادخل البريد الإلكتروني الخاص بك' })
+    .email({ message: 'بريد إلكتروني غير صحيح' }),
   password: z
     .string()
     .min(1, {
-      message: 'Please enter your password',
+      message: 'من فضلك ادخل كلمة السر',
     })
     .min(7, {
-      message: 'Password must be at least 7 characters long',
+      message: 'كلمة السر يجب ان تكون مكونة من 7 حروف او اكثر',
     }),
 })
 
@@ -64,8 +64,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name='email'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
+                  <FormLabel>البريد الإلكتروني</FormLabel>
+                  <FormControl >
                     <Input placeholder='name@example.com' {...field} />
                   </FormControl>
                   <FormMessage />
@@ -78,12 +78,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               render={({ field }) => (
                 <FormItem className='space-y-1'>
                   <div className='flex items-center justify-between'>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>كلمة السر</FormLabel>
                     <Link
                       to='/forgot-password'
                       className='text-sm font-medium text-muted-foreground hover:opacity-75'
                     >
-                      Forgot password?
+                      نسيت كلمة السر ؟
                     </Link>
                   </div>
                   <FormControl>
@@ -94,10 +94,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               )}
             />
             <Button className='mt-2' loading={isLoading}>
-              Login
+              تسجيل الدخول
             </Button>
 
-            <div className='relative my-2'>
+            {/* <div className='relative my-2'>
               <div className='absolute inset-0 flex items-center'>
                 <span className='w-full border-t' />
               </div>
@@ -106,8 +106,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                   Or continue with
                 </span>
               </div>
-            </div>
-
+            </div> */}
+            {/* 
             <div className='flex items-center gap-2'>
               <Button
                 variant='outline'
@@ -127,7 +127,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               >
                 Facebook
               </Button>
-            </div>
+            </div> */}
           </div>
         </form>
       </Form>

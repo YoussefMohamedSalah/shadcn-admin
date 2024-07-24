@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 export default function SignUp() {
   return (
     <>
-      <div className='container grid h-svh flex-col items-center justify-center bg-primary-foreground lg:max-w-none lg:px-0'>
+      <div className='container grid flex-col items-center justify-center bg-primary-foreground lg:max-w-none lg:px-0'>
         <div className='mx-auto flex w-full flex-col justify-center space-y-2 sm:w-[480px] lg:p-8'>
           <div className='mb-4 flex items-center justify-center'>
+            <h1 className='text-xl font-medium'>Royal Portal</h1>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 24 24'
@@ -20,39 +21,38 @@ export default function SignUp() {
             >
               <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
             </svg>
-            <h1 className='text-xl font-medium'>Shadcn Admin</h1>
           </div>
           <Card className='p-6'>
-            <div className='mb-2 flex flex-col space-y-2 text-left'>
+            <div className='mb-2 flex flex-col space-y-2 text-right'>
               <h1 className='text-lg font-semibold tracking-tight'>
-                Create an account
+                تسجيل حساب جديد
               </h1>
               <p className='text-sm text-muted-foreground'>
-                Enter your email and password to create an account. <br />
-                Already have an account?{' '}
+                أدخل جميع البيانات المطلوبة لإنشاء حساب. <br />
+                هل لديك حساب بالفعل؟{' '}
                 <Link
                   to='/sign-in'
                   className='underline underline-offset-4 hover:text-primary'
                 >
-                  Sign In
+                  تسجيل الدخول
                 </Link>
               </p>
             </div>
             <SignUpForm />
             <p className='mt-4 px-8 text-center text-sm text-muted-foreground'>
-              By creating an account, you agree to our{' '}
+              بإنشاء حساب، فإنك توافق على{' '}
               <a
                 href='/terms'
                 className='underline underline-offset-4 hover:text-primary'
               >
-                Terms of Service
+                شروط الخدمة
               </a>{' '}
-              and{' '}
+              و{' '}
               <a
                 href='/privacy'
                 className='underline underline-offset-4 hover:text-primary'
               >
-                Privacy Policy
+                سياسة الخصوصية
               </a>
               .
             </p>

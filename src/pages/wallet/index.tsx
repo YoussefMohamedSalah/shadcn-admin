@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import {
   IconBrowserCheck,
-  IconExclamationCircle,
   IconNotification,
   IconPalette,
   IconTool,
@@ -14,7 +13,7 @@ import ThemeSwitch from '@/components/theme-switch'
 import { UserNav } from '@/components/user-nav'
 import SidebarNav from './components/sidebar-nav'
 
-export default function Settings() {
+export default function MyWallet() {
   return (
     <Layout fixed>
       {/* ===== Top Heading ===== */}
@@ -29,7 +28,7 @@ export default function Settings() {
       <Layout.Body className='flex flex-col'>
         <div className='space-y-0.5'>
           <h1 className='text-2xl font-bold tracking-tight md:text-3xl'>
-            Settings
+            إدارة محفظتك
           </h1>
           <p className='text-muted-foreground'>
             Manage your account settings and set e-mail preferences.
@@ -51,33 +50,33 @@ export default function Settings() {
 
 const sidebarNavItems = [
   {
-    title: 'Profile',
+    title: 'بيانات المحفظة',
     icon: <IconUser size={18} />,
-    href: '/settings',
+    href: '/wallet',
   },
   {
-    title: 'Account',
-    icon: <IconTool size={18} />,
-    href: '/settings/account',
-  },
-  {
-    title: 'Appearance',
-    icon: <IconPalette size={18} />,
-    href: '/settings/appearance',
-  },
-  {
-    title: 'Notifications',
+    title: 'سحب',
     icon: <IconNotification size={18} />,
-    href: '/settings/notifications',
+    href: '/wallet/withdraw',
   },
   {
-    title: 'Display',
+    title: 'ايداع',
     icon: <IconBrowserCheck size={18} />,
-    href: '/settings/display',
+    href: '/wallet/deposit',
   },
   {
-    title: 'Error Example',
-    icon: <IconExclamationCircle size={18} />,
-    href: '/settings/error-example',
+    title: 'تقارير',
+    icon: <IconTool size={18} />,
+    href: '/wallet/reports',
   },
+  {
+    title: 'الدعم الفني',
+    icon: <IconPalette size={18} />,
+    href: '/wallet/wallet-support',
+  },
+  // {
+  //   title: 'Error Example',
+  //   icon: <IconExclamationCircle size={18} />,
+  //   href: '/wallet/error-example',
+  // },
 ]

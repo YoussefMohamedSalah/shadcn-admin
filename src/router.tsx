@@ -13,12 +13,6 @@ const router = createBrowserRouter([
     }),
   },
   {
-    path: '/sign-in-2',
-    lazy: async () => ({
-      Component: (await import('./pages/auth/sign-in-2')).default,
-    }),
-  },
-  {
     path: '/sign-up',
     lazy: async () => ({
       Component: (await import('./pages/auth/sign-up')).default,
@@ -87,6 +81,52 @@ const router = createBrowserRouter([
         lazy: async () => ({
           Component: (await import('@/pages/extra-components')).default,
         }),
+      },
+      {
+        path: 'profile',
+        lazy: async () => ({
+          Component: (await import('./pages/profile')).default,
+        }),
+      },
+      {
+        path: 'wallet',
+        lazy: async () => ({
+          Component: (await import('./pages/wallet')).default,
+        }),
+        errorElement: <GeneralError />,
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('./pages/wallet/profile')).default,
+            }),
+          },
+          {
+            path: 'withdraw',
+            lazy: async () => ({
+              Component: (await import('./pages/wallet/account')).default,
+            }),
+          },
+          {
+            path: 'deposit',
+            lazy: async () => ({
+              Component: (await import('./pages/wallet/appearance')).default,
+            }),
+          },
+          {
+            path: 'reports',
+            lazy: async () => ({
+              Component: (await import('./pages/wallet/notifications'))
+                .default,
+            }),
+          },
+          {
+            path: 'wallet-support',
+            lazy: async () => ({
+              Component: (await import('./pages/wallet/display')).default,
+            }),
+          },
+        ],
       },
       {
         path: 'settings',
