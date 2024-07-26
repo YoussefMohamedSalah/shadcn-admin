@@ -47,6 +47,9 @@ export default function Dashboard() {
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                  <CardTitle className='text-sm font-medium'>
+                    Account balance
+                  </CardTitle>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -60,19 +63,19 @@ export default function Dashboard() {
                     <rect width='20' height='14' x='2' y='5' rx='2' />
                     <path d='M2 10h20' />
                   </svg>
-                  <CardTitle className='text-sm font-medium'>
-                    Account balance
-                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold text-end'>5,340 EGP</div>
-                  <p className='text-xs text-muted-foreground text-end'>
-                    +20.1% from last month
+                  <div className='text-2xl font-bold'>5,340 EGP</div>
+                  <p className='text-xs text-muted-foreground'>
+                    +20.1% From last month
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                  <CardTitle className='text-sm font-medium'>
+                    Network Members
+                  </CardTitle>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -87,19 +90,17 @@ export default function Dashboard() {
                     <circle cx='9' cy='7' r='4' />
                     <path d='M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' />
                   </svg>
-                  <CardTitle className='text-sm font-medium'>
-                    Network Members
-                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold text-end'>22</div>
-                  <p className='text-xs text-muted-foreground text-end'>
+                  <div className='text-2xl font-bold'>22</div>
+                  <p className='text-xs text-muted-foreground'>
                     7 New members this month
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                  <CardTitle className='text-sm font-medium'>My Rank</CardTitle>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -112,17 +113,19 @@ export default function Dashboard() {
                   >
                     <path d='M22 12h-4l-3 9L9 3l-3 9H2' />
                   </svg>
-                  <CardTitle className='text-sm font-medium'>My Rank</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold text-end'>Golden</div>
-                  <p className='text-xs text-muted-foreground text-end'>
-                    One of the Best 100
+                  <div className='text-2xl font-bold'>Golden</div>
+                  <p className='text-xs text-muted-foreground'>
+                    One of the best 100
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+                  <CardTitle className='text-sm font-medium'>
+                    Courses watch percentage
+                  </CardTitle>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -135,13 +138,10 @@ export default function Dashboard() {
                   >
                     <path d='M22 12h-4l-3 9L9 3l-3 9H2' />
                   </svg>
-                  <CardTitle className='text-sm font-medium'>
-                    Courses watch percentage
-                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold text-end'>14%</div>
-                  <p className='text-xs text-muted-foreground text-end'>
+                  <div className='text-2xl font-bold'>14%</div>
+                  <p className='text-xs text-muted-foreground'>
                     +2% from last month
                   </p>
                 </CardContent>
