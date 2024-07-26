@@ -22,15 +22,15 @@ interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }
 const formSchema = z.object({
   email: z
     .string()
-    .min(1, { message: 'من فضلك ادخل البريد الإلكتروني الخاص بك' })
-    .email({ message: 'بريد إلكتروني غير صحيح' }),
+    .min(1, { message: 'Please enter your email' })
+    .email({ message: 'Invalid email address' }),
   password: z
     .string()
     .min(1, {
-      message: 'من فضلك ادخل كلمة السر',
+      message: 'Please enter your password',
     })
     .min(7, {
-      message: 'كلمة السر يجب ان تكون مكونة من 7 حروف او اكثر',
+      message: 'Password must be at least 7 characters long',
     }),
 })
 
@@ -64,7 +64,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name='email'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>البريد الإلكتروني</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl >
                     <Input placeholder='name@example.com' {...field} />
                   </FormControl>
@@ -78,12 +78,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               render={({ field }) => (
                 <FormItem className='space-y-1'>
                   <div className='flex items-center justify-between'>
-                    <FormLabel>كلمة السر</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <Link
                       to='/forgot-password'
                       className='text-sm font-medium text-muted-foreground hover:opacity-75'
                     >
-                      نسيت كلمة السر ؟
+                      Forgot password?
                     </Link>
                   </div>
                   <FormControl>
@@ -94,7 +94,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               )}
             />
             <Button className='mt-2' loading={isLoading}>
-              تسجيل الدخول
+              Login
             </Button>
 
             {/* <div className='relative my-2'>

@@ -59,7 +59,6 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
 
     return (
       <div
-        dir='ltr'
         ref={ref}
         data-layout='header'
         className={cn(

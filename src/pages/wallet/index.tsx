@@ -28,7 +28,7 @@ export default function MyWallet() {
       <Layout.Body className='flex flex-col'>
         <div className='space-y-0.5'>
           <h1 className='text-2xl font-bold tracking-tight md:text-3xl'>
-            إدارة محفظتك
+            Manage your wallet
           </h1>
           <p className='text-muted-foreground'>
             Manage your account settings and set e-mail preferences.
@@ -50,27 +50,27 @@ export default function MyWallet() {
 
 const sidebarNavItems = [
   {
-    title: 'بيانات المحفظة',
+    title: 'Wallet details',
     icon: <IconUser size={18} />,
     href: '/wallet',
   },
   {
-    title: 'سحب',
+    title: 'Withdraw',
     icon: <IconNotification size={18} />,
     href: '/wallet/withdraw',
   },
   {
-    title: 'ايداع',
+    title: 'Deposit',
     icon: <IconBrowserCheck size={18} />,
     href: '/wallet/deposit',
   },
   {
-    title: 'تقارير',
+    title: 'Reports',
     icon: <IconTool size={18} />,
     href: '/wallet/reports',
   },
   {
-    title: 'الدعم الفني',
+    title: 'Technical support',
     icon: <IconPalette size={18} />,
     href: '/wallet/wallet-support',
   },

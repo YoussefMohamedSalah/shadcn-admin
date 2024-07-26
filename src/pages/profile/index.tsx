@@ -22,7 +22,7 @@ export default function Profile() {
         <div className='flex flex-1 flex-col space-y-8 md:space-y-2 md:overflow-hidden lg:flex-row lg:space-x-12 lg:space-y-0'>
           <div className='flex w-full p-1 pr-4 md:overflow-y-hidden'>
             <ContentSection
-              title='الملف الشخصي'
+              title='My Profile'
               desc='Manage your account settings and set e-mail preferences.'
             >
               <>

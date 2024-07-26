@@ -22,7 +22,7 @@ import {
 } from './ui/tooltip'
 import { cn } from '@/lib/utils'
 import useCheckActiveNav from '@/hooks/use-check-active-nav'
-import { SideLink } from '@/data/sidelinks'
+import { SideLink } from '@/data/sideLinks'
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean
@@ -99,14 +99,14 @@ function NavLink({
           size: 'sm',
         }),
         'h-12 justify-start text-wrap rounded-none px-6',
-        subLink && 'h-10 w-full border-r border-l-slate-500 px-2'
+        subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
       )}
       aria-current={checkActiveNav(href) ? 'page' : undefined}
     >
-      <div className='ml-2'>{icon}</div>
+      <div className='mr-2'>{icon}</div>
       {title}
       {label && (
-        <div className='mr-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
+        <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
           {label}
         </div>
       )}
@@ -129,16 +129,16 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
           'group h-12 w-full justify-start rounded-none px-6'
         )}
       >
-        <div className='ml-2'>{icon}</div>
+        <div className='mr-2'>{icon}</div>
         {title}
         {label && (
-          <div className='mr-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
+          <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
             {label}
           </div>
         )}
         <span
           className={cn(
-            'mr-auto transition-all group-data-[state="open"]:-rotate-180'
+            'ml-auto transition-all group-data-[state="open"]:-rotate-180'
           )}
         >
           <IconChevronDown stroke={1} />
@@ -147,7 +147,7 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
       <CollapsibleContent className='collapsibleDropdown' asChild>
         <ul>
           {sub!.map((sublink) => (
-            <li key={sublink.title} className='my-1 mr-8'>
+            <li key={sublink.title} className='my-1 ml-8'>
               <NavLink {...sublink} subLink closeNav={closeNav} />
             </li>
           ))}

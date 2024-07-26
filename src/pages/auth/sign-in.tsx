@@ -23,35 +23,36 @@ export default function SignIn() {
             </svg>
           </div>
           <Card className='p-6'>
-            <div className='flex flex-col space-y-2 text-right'>
-              <h1 className='text-2xl font-semibold tracking-tight'>تسجيل الدخول</h1>
+            <div className='flex flex-col space-y-2 text-left'>
+              <h1 className='text-2xl font-semibold tracking-tight'>Login</h1>
               <p className='text-sm text-muted-foreground'>
-                ادخل الايميل وكلمة المرور للولوج الي الملف الخاص بك
+                Enter your email and password below <br />
+                to log into your account
                 <br />
-                لا تملك حساب ؟{' '}
+                Don't have an account?{' '}
                 <Link
                   to='/sign-up'
                   className='underline underline-offset-4 hover:text-primary'
                 >
-                  تسجيل الدخول
+                  Sign up
                 </Link>
               </p>
             </div>
             <UserAuthForm />
             <p className='mt-4 px-8 text-center text-sm text-muted-foreground'>
-              بتسجيل الدخول, فإنك توافق على{' '}
+              By clicking login, you agree to our{' '}
               <a
                 href='/terms'
                 className='underline underline-offset-4 hover:text-primary'
               >
-                شروط الخدمة
+                Terms of Service
               </a>{' '}
-              و{' '}
+              and{' '}
               <a
                 href='/privacy'
                 className='underline underline-offset-4 hover:text-primary'
               >
-                سياسة الخصوصية
+                Privacy Policy
               </a>
               .
             </p>

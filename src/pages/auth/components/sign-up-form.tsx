@@ -22,41 +22,41 @@ const formSchema = z
   .object({
     first_name: z
       .string()
-      .min(1, { message: 'يرجى إدخال الاسم الأول' }),
+      .min(1, { message: 'Please enter your first name' }),
     last_name: z
       .string()
-      .min(1, { message: 'يرجى إدخال اسم العائلة' }),
+      .min(1, { message: 'Please enter your last name' }),
     user_name: z
       .string()
-      .min(1, { message: 'يرجى إدخال اسم المستخدم' }),
+      .min(1, { message: 'Please enter user name' }),
     email: z
       .string()
-      .min(1, { message: 'يرجى إدخال البريد الإلكتروني' })
-      .email({ message: 'عنوان البريد الإلكتروني غير صالح' }),
+      .min(1, { message: 'Please enter your email' })
+      .email({ message: 'Invalid email address' }),
     address: z
       .string()
-      .min(1, { message: 'يرجى إدخال العنوان' }),
+      .min(1, { message: 'Please enter your address' }),
     phone_number: z
       .string()
-      .min(1, { message: 'يرجى إدخال رقم الهاتف' }),
+      .min(1, { message: 'Please enter your phone number' }),
     id_number: z
       .string()
-      .min(1, { message: 'يرجى إدخال رقم الهوية' }),
+      .min(1, { message: 'Please enter your ID number' }),
     register_code: z
       .string()
-      .min(1, { message: 'يرجى إدخال رمز التسجيل' }),
+      .min(1, { message: 'Please enter your registration code' }),
     password: z
       .string()
       .min(1, {
-        message: 'يرجى إدخال كلمة المرور',
+        message: 'Please enter your password',
       })
       .min(7, {
-        message: 'يجب أن تكون كلمة المرور مكونة من 7 أحرف على الأقل',
+        message: 'Password must be at least 7 characters long',
       }),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'كلمات المرور غير متطابقة',
+    message: "Passwords don't match.",
     path: ['confirmPassword'],
   });
 
@@ -97,9 +97,9 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='first_name'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>الاسم الأول</FormLabel>
+                  <FormLabel>First name</FormLabel>
                   <FormControl>
-                    <Input placeholder='الاسم الأول' {...field} />
+                    <Input placeholder='First name' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -110,9 +110,9 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='last_name'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>اسم العائلة</FormLabel>
+                  <FormLabel>Last name</FormLabel>
                   <FormControl>
-                    <Input placeholder='اسم العائلة' {...field} />
+                    <Input placeholder='Last name' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,9 +123,9 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='user_name'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>اسم المستخدم</FormLabel>
+                  <FormLabel>User name</FormLabel>
                   <FormControl>
-                    <Input placeholder='اسم المستخدم' {...field} />
+                    <Input placeholder='User name' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -136,7 +136,7 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='email'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>البريد الإلكتروني</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder='name@example.com' {...field} />
                   </FormControl>
@@ -149,9 +149,9 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='address'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>العنوان</FormLabel>
+                  <FormLabel>Address</FormLabel>
                   <FormControl>
-                    <Input placeholder='العنوان' {...field} />
+                    <Input placeholder='Address' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,7 +162,7 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='phone_number'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>رقم الهاتف</FormLabel>
+                  <FormLabel>Phone number</FormLabel>
                   <FormControl>
                     <Input placeholder='+201234567890' {...field} />
                   </FormControl>
@@ -175,7 +175,7 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               name='id_number'
               render={({ field }) => (
                 <FormItem className='space-y-1'>
-                  <FormLabel>رقم الهوية</FormLabel>
+                  <FormLabel>ID number</FormLabel>
                   <FormControl>
                     <Input placeholder='' {...field} />
                   </FormControl>
@@ -210,40 +210,8 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
               )}
             />
             <Button className='mt-2' loading={isLoading}>
-              إنشاء حساب
+              Create Account
             </Button>
-
-            {/* <div className='relative my-2'>
-              <div className='absolute inset-0 flex items-center'>
-                <span className='w-full border-t' />
-              </div>
-              <div className='relative flex justify-center text-xs uppercase'>
-                <span className='bg-background px-2 text-muted-foreground'>
-                  Or continue with
-                </span>
-              </div>
-            </div>
-
-            <div className='flex items-center gap-2'>
-              <Button
-                variant='outline'
-                className='w-full'
-                type='button'
-                loading={isLoading}
-                leftSection={<IconBrandGithub className='h-4 w-4' />}
-              >
-                GitHub
-              </Button>
-              <Button
-                variant='outline'
-                className='w-full'
-                type='button'
-                loading={isLoading}
-                leftSection={<IconBrandFacebook className='h-4 w-4' />}
-              >
-                Facebook
-              </Button>
-            </div> */}
           </div>
         </form>
       </Form>

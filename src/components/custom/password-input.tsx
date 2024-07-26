@@ -11,15 +11,6 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
     const [showPassword, setShowPassword] = React.useState(false)
     return (
       <div className='relative rounded-md'>
-        <Button
-          type='button'
-          size='icon'
-          variant='ghost'
-          className='absolute left-1 top-1/2 h-6 w-6 -translate-y-1/2 rounded-md text-muted-foreground'
-          onClick={() => setShowPassword((prev) => !prev)}
-        >
-          {showPassword ? <IconEye size={18} /> : <IconEyeOff size={18} />}
-        </Button>
         <input
           type={showPassword ? 'text' : 'password'}
           className={cn(
@@ -29,6 +20,15 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
           ref={ref}
           {...props}
         />
+        <Button
+          type='button'
+          size='icon'
+          variant='ghost'
+          className='absolute right-1 top-1/2 h-6 w-6 -translate-y-1/2 rounded-md text-muted-foreground'
+          onClick={() => setShowPassword((prev) => !prev)}
+        >
+          {showPassword ? <IconEye size={18} /> : <IconEyeOff size={18} />}
+        </Button>
       </div>
     )
   }
