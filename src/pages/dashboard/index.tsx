@@ -158,8 +158,8 @@ export default function Dashboard() {
               </Card>
               <Card className='col-span-1 lg:col-span-3'>
                 <CardHeader>
-                  <CardTitle className="text-end">Latest network members</CardTitle>
-                  <CardDescription className="text-end">
+                  <CardTitle>Latest network members</CardTitle>
+                  <CardDescription>
                     7 New members this month
                   </CardDescription>
                 </CardHeader>

@@ -5,8 +5,11 @@ interface TopNavProps extends React.HTMLAttributes<HTMLElement> {
 export function WelcomeMsg({ name }: TopNavProps) {
   return (
     <>
-      <div className=''>
-        <h1 className='text-2xl font-550 tracking-tight'>Hello {name}</h1>
+      <div>
+        <p className='text-2xl text-muted-foreground'>
+          {name}
+        </p>
+        <span> Welcome back! {" "}</span>
       </div>
     </>
   )

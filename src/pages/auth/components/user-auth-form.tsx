@@ -16,6 +16,12 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/custom/button'
 import { PasswordInput } from '@/components/custom/password-input'
 import { cn } from '@/lib/utils'
+import useApp from '@/hooks/useApp'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
+import authService from '@/api/services/Auth/auth.service'
+import { loginAction } from "../../../contexts/slices/auth.slice";
+import { ROUTES } from '@/constants/routes'
+import { ELocalStorageKeys } from '@/constants/local-storage-keys'
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }
 
@@ -37,6 +43,10 @@ const formSchema = z.object({
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState(false)
 
+  const dispatch = useAppDispatch();
+  const { push } = useApp();
+  // const { showError } = useUI();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,13 +55,21 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     },
   })
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true)
-    console.log(data)
-
-    setTimeout(() => {
+    try {
+      const result = await authService.Login(data);
+      localStorage.setItem(ELocalStorageKeys.VIEW, "user");
+      if (result?.accessToken) {
+        dispatch(loginAction({ ...result.user }));
+        push(ROUTES.MAIN);
+      }
       setIsLoading(false)
-    }, 3000)
+    } catch (err: any) {
+      setIsLoading(false)
+      console.log(err.response?.data?.msg);
+      // showError(handleServerError(err.response));
+    }
   }
 
   return (
