@@ -9,6 +9,7 @@ import { ProtectedRoute } from "./protected-route";
 import { ROUTES } from './constants/routes';
 import DashboardLayout from "./layouts/Dashboard/DashboardLayout";
 import AuthLayout from "./layouts/Auth/AuthLayout";
+import LandingPage from "./pages/LandingPages/LandingPage";
 
 type TLoginLoader = Promise<{ isLoggedIn: boolean }>;
 
@@ -114,6 +115,9 @@ export const router = createBrowserRouter([
       { path: ROUTES.REGISTER, element: <AuthPages.SignUp /> },
     ],
   },
+
+  { path: '/landing', element: <LandingPage /> },
+
   // Error routes
   { path: '/500', element: <GeneralError /> },
   { path: '/404', element: <NotFoundError /> },
